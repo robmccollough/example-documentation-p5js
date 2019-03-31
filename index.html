@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Technical Documentation Page</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+  <div id=page-container>
+    <nav id="navbar">
+      <header id="nav-header">
+        <h1> <a id="logo" href="https://p5js.org/reference/">p5.js</a> Documentation </h1>
+      </header>
+      <a class="nav-link" href="#Introduction">Introduction</a>
+      <a class="nav-link" href="#Displaying_your_project">Displaying your project</a>
+      <a class="nav-link" href="#Setup_and_Draw_functions">Setup and Draw functions</a>
+      <a class="nav-link" href="#Shapes">Shapes</a>
+      <a class="nav-link" href="#Adding_colors">Adding colors</a>
+      <a class="nav-link" href="#Animating">Animating</a>
+      <a class="nav-link" href="#Libraries">Libraries</a>
+      <a class="nav-link" href="#Reference">Reference</a>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header id="introduction-header">
+          <h2>Introduction</h2>
+        </header>
+        <p> p5.js is a Javascript library that starts with the goal of Processing, to make coding accessible for artist,
+          designers, creators, and beginners, and reinterperets this for todays javascript-heavy web environment.
+        </p>
+        <p> Think of p5.j5 as sketchbook that allows you to draw with code in your browser simply by loading an html file.
+          However thats not all p5.js has to offer. p5.js has addon libaries that allow manipulation of other HTML5 elements,
+          work with physics engines, create neural networks, and manipulate sound!
+        </p>
+        </p> This page will walk through how to get started on your first sketch, the basics of drawing, and take a look at some
+        libraries offered by the Processing foundation. </p>
+      </section>
+      <section class="main-section" id="Displaying_your_project">
+        <header id="displaying_your_project-header">
+          <h2>Displaying your project</h2>
+        </header>
+        <p> p5.js sketches are displayed from an <code> index.html </code> file that is opened in the browser. </p>
+        <p> Simply add the p5.js libraries to your project using the following script links:</p>
+        <code>
+          &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"&gt;&lt;/script&gt;
+          <br>
+          &lt;script src="sketch.js"&lt;/script&gt;
+        </code>
+        <p> Alternatively, you can use the newly launched <a href="https://editor.p5js.org/"> p5.js Web Editor </a> to get started
+          right away </p>
+
+      </section>
+      <section class="main-section" id="Setup_and_Draw_functions">
+        <header id="setup_and_draw_functions-header">
+          <h2>Setup and Draw functions</h2>
+        </header>
+        <p> The index.html is what you open in the brower to see your project, but the actual code is written
+          in the <code> sketch.js </code> javascript file. </p>
+        <p> p5.js has 2 basic functions that are executed when the program runs </p>
+        <p> The <code> setup() </code> function runs once at the beginning, this is where you should put
+          pieces of code that you only want to happen once </p>
+        <p> Alternatively, the <code> draw() </code> fucntion runs on a loop and is executed many times a second according to given framerate
+          (which you can adjust!)</p>
+        <p> The base element for a p5.js sketch is the <code> canvas </code> this, is where your sketch will be displayed on the page. </p>
+        <p> Here is an example <code> sketch.js </code> that creates a 400px wide, 400px tallcanvas inside the setup function, and sets the background to grey.</p>
+        <pre>
+          <code>
+  function setup() {
+    createCanvas(400, 400);
+  }
+
+  function draw() {
+    background(220);
+  }
+          </code>
+        </pre>
+
+      </section>
+      <section class="main-section" id="Shapes">
+        <header id="shapes-header">
+          <h2>Shapes</h2>
+        </header>
+        <p> Lets take a look at how to add some basic shapes to our project </p>
+        <p> p5.js has many ways to draw different shapes, but the 2 easiest built in ones are what you might expect: the rectangle and the ellipse.</p>
+        <p> Here are the functions for drawing a rectangle and an ellipse, along with the arguments they take:</p>
+        <ul>
+          <li> Rectangle: <code> rect(x1, y1, x2, y2) </code>
+            <br>
+            <p> Where (x1,y1) is the positoin of the bottom left corner, and (x2,y2) the position of the top right corner <p>
+          </li>
+          <li> Circle: <code> ellipse(x, y, width, height) </code>
+            <br>
+            <p> The first 2 arguments denote the position, and the width and height aruments are the major and minor axis
+              of the ellipse. If the width an height are the same it is a circle.<p>
+          </li>
+
+
+        </ul>
+
+      </section>
+      <section class="main-section" id="Adding_colors">
+        <header id="adding-colors-header">
+          <h2>Adding colors</h2>
+        </header>
+        <p> The backgroud color has a default value of <code>#ffffff</code>, which is white, and the drawing color has a default value of <code> #000000 </code>, or black.</p>
+        <p> To change the background color, you can use the handy <code>background(color)</code> function like in the example above</p>
+        <p> p5.js has several different ways it can interperet color values, here are the most common: </p>
+        <ul>
+          <li> Single integer value between 0-255, where 0 is black and 255 is white </li>
+          <li> A triplet of values represneting the amount of red, blue, and green like this:
+            <pre><code>
+    background(255,0,0); //red background
+    background(0,255,0); //blue background
+    background(0,0,255); //green background
+                  </code>
+                </pre>
+          </li>
+          <li> A color object, which store the color for later use:<br>
+            <code> var c = new Color(50, 150, 75); <br> background(c); </code>
+          </li>
+        </ul>
+        <p> To add color to a shape, use the <code> fill(color) </code> function <p>
+            <p> This function tells p5.js to fill shapes with whatever color you give it <p>
+
+      </section>
+      <section class="main-section" id="Animating">
+        <header id="animating-header">
+          <h2>Animating</h2>
+        </header>
+        <p> Animating elements in p5.js is simply a matter of changing where they are drawn on the canvas every time draw loops! </p>
+        <p> Here is an example of a sketch that draws a red circle in the middle of the white
+          canvas, and uses a global variable that is increased every time through <code> draw() </code></p>
+        <p> This results in the circle appearing as moving to the right <p>
+            <p> Be careful to redraw the brackground each time through <code> draw()</code> as well, otherwise your circle will leave a trail <p>
+                <pre>
+            <code>
+    var x = 200;
+
+    function setup(){
+      createCanvas(400,400);
+    }
+
+    fuction draw(){
+      background(255);
+      fill(255,0,0);
+      ellipse(x,200,25,25);
+    }
+              </code>
+                </pre>
+
+      </section>
+      <section class="main-section" id="Libraries">
+        <header id="libraries-header">
+          <h2>Libraries</h2>
+        </header>
+        <p> p5.js has many addon libraries you can use to do all sorts of cool things
+          but you can use any other javascript libary you want in you project if you need to, but you make have to
+          do some digging to make it work nicely <p>
+            <p> Here are a few: <p>
+                <ul>
+                  <li>
+                    Implement a physics engine with <a href=""> Moment.js </a>
+                  </li>
+                  <li>
+                    Play around with audio with <a href=""> p5.sound.js </a>
+                  </li>
+                  <li>
+                    Build a neural network with <a href="">TensorFlow.js</a>
+                  </li>
+                </ul>
+      </section>
+      <section class="main-section" id="Reference">
+        <header id="reference-header">
+          <h2>Reference</h2>
+        </header>
+        <p> For a better articulated and much more complete reference on p5.js, including tutorials, examples, and a wealth of information
+          , visit the actual reference <a href="https://p5js.org/reference/">here </a>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>
